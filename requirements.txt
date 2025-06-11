@@ -2,4 +2,4 @@ google-generativeai
 pandas
 openpyxl
 python-dotenv
-
+nbformat
