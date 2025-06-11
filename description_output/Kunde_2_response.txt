@@ -1,0 +1,5 @@
+```json
+{
+  "summary": "CareMates is a German HealthTech company offering a SaaS platform to optimize the patient admission process for care facilities. The solution digitizes administrative workflows, featuring digital registration forms and AI-supported nursing assessments that comply with MD standards. This significantly reduces bureaucratic tasks for nursing staff, saving up to 80% of admission time per patient. The platform also enables asynchronous collaboration between departments and integrates seamlessly with existing primary healthcare IT systems. Targeting the B2B healthcare sector, CareMates primarily serves nursing homes and care facilities in Germany, aiming to relieve staff and improve overall care conditions through innovative technology."
+}
+```

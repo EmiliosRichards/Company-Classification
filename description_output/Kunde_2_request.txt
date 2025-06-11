@@ -1,0 +1,66 @@
+You are an expert business analyst. Your task is to synthesize information from two sources: structured data from an Excel file and unstructured German text. Based on this combined information, please provide a concise and professional company description in English, with a maximum of 150 words.
+
+Your analysis should cover the following key areas:
+1.  **Core Business and Offerings:** What does the company do? What are its main products or services?
+2.  **Target Industry:** What is the company's primary industry? 
+3.  **Customer Base:** Who are their likely customers? (e.g., B2B, SMEs, large enterprises, specific sectors).
+
+Your response must be a single, valid JSON object. Do not include any conversational preamble, summaries, or any text whatsoever outside of this JSON structure. Your response must begin with '{' and end with '}'.
+
+JSON Output Structure:
+{
+  "summary": "Your detailed and informative summary here..."
+}
+
+IMPORTANT:
+You MUST return all fields specified in the JSON structure. If a value for a field cannot be determined, return an appropriate default value (e.g., an empty string "" for the summary), but do not omit the field itself.
+
+Remember, the entire response must be ONLY the JSON object. Do not wrap it in markdown ```json blocks.
+
+Here is the combined information:
+
+--- STRUCTURED DATA (from Excel) ---
+Company Name                                                                           CareMates / Kuidado
+Industry                                                 Healthcare Software / Healthcare IT (specifica...
+Industry Category                                                Healthcare Technology / HealthTech (SaaS)
+Products/Services Offered                                Digital registration forms; AI-supported nursi...
+USP (Unique Selling Proposition) / Key Selling Points    Significant time savings in patient admission ...
+Customer Target Segments                                                   Care facilities / Nursing homes
+Customer Target Segments Category                                Healthcare Sector (B2B - Care Facilities)
+Business Model                                           Software solution provider (likely SaaS given ...
+Business Model Category                                                                               SaaS
+Company Size Indicators                                  Founded by two individuals (Dylan Gruner and S...
+Company Size Category                                                                              Startup
+Innovation Level Indicators                              Innovative software solution; Digitization; AI...
+Geographic Reach                                         Germany (Headquartered in Altomünster, Germany...
+Geographic Reach Category                                                               National (Germany)
+Website                                                                                       caremates.de
+Email                                                                                                  NaN
+Phone                                                                                                  NaN
+Source Document Section/Notes                                                                      Kunde 2
+Is Successful Partner                                                                                 True
+
+--- UNSTRUCTURED GERMAN TEXT ---
+caremates.de  Kuidado 
+(Kein Skript vorhanden)
+
+CareMates ist eine innovative Softwarelösung, die den Aufnahmeprozess in Pflegeeinrichtungen digitalisiert und somit Pflegefachkräften ermöglicht, administrative Aufgaben effizienter zu gestalten. Das Unternehmen wurde von Dylan Gruner und Sören Gunia gegründet und hat seinen Sitz in Altomünster, Deutschland.
+Dienstleistungen:
+•	Digitale Anmeldebögen: Interessenten können rund um die Uhr strukturierte Anfragen online übermitteln, was den Verwaltungsaufwand erheblich reduziert.
+•	KI-gestützte Pflegeanamnese: Automatische Erstellung von Pflegeanamnesen mit Risikobewertung basierend auf den Angaben des digitalen Aufnahmebogens, konform mit MD-Standards.
+•	Individuelle Konfiguration: Anpassung der Anmeldebögen und Aufnahmeprozesse an die spezifischen Bedürfnisse und Abläufe der jeweiligen Einrichtung.
+•	Asynchrone Kollaboration: Ermöglicht es verschiedenen Abteilungen, Anfragen gemeinsam zu kommentieren, zu priorisieren und zwischen Einrichtungen zu teilen.
+•	Automatisierte Benachrichtigungen: Je nach Status einer Anfrage werden automatisch Benachrichtigungen an Angehörige oder gesetzliche Betreuer versendet.
+•	Nahtlose Datenintegration: Automatische Übertragung relevanter Daten in bestehende Primärsysteme wie Connext Vivendi, Euregon Snap, CGM TopSoz und SENSO.
+Hauptmerkmale von CareMates:
+•	Zeitersparnis bei der Patientenaufnahme: Durch den Einsatz von CareMates kann die Aufnahmezeit pro Patient um bis zu 80% reduziert werden, was einer Einsparung von bis zu vier Stunden pro Aufnahme entspricht.
+•	Digitale Anmeldebögen: Interessenten können rund um die Uhr strukturierte Anfragen online übermitteln, entweder per E-Mail oder direkt über die Website der Pflegeeinrichtung.
+•	KI-gestützte Pflegeanamnese: Basierend auf den Angaben des digitalen Aufnahmebogens erstellt CareMates automatisch eine vollständige Pflegeanamnese mit Risikobewertung, die den MD-Standards entspricht.
+•	Individuelle Anpassbarkeit: Sowohl die Anmeldebögen als auch der gesamte Aufnahmeprozess können flexibel an die spezifischen Bedürfnisse und Abläufe der jeweiligen Einrichtung angepasst werden.
+•	Asynchrone Zusammenarbeit: Pflegedienstleitungen, Verwaltung und Qualitätsmanagement können gemeinsam Anfragen kommentieren, priorisieren und zwischen verschiedenen Einrichtungen oder Diensten teilen.
+•	Automatisierte Benachrichtigungen: Je nach Status einer Anfrage versendet CareMates automatisch Benachrichtigungen an Angehörige oder gesetzliche Betreuer.
+•	Nahtlose Integration: Die Software überträgt alle relevanten Daten automatisch an bestehende Primärsysteme wie Connext Vivendi, Euregon Snap, CGM TopSoz oder SENSO.
+CareMates wurde in enger Zusammenarbeit mit der Caritas entwickelt, um sicherzustellen, dass die Software den realen Anforderungen im Pflegealltag gerecht wird. Eine Umfrage nach der Pilotphase zeigte, dass 10 von 11 Pflegekräften auch zukünftig mit CareMates arbeiten möchten. 
+Krankenhaus IT
+Mit der Mission, Pflegekräfte durch digitale Technologien vollständig von bürokratischen Aufgaben zu entlasten, trägt CareMates dazu bei, die Pflegebedingungen für alle Beteiligten zu verbessern.
+---
