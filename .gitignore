@@ -14,7 +14,6 @@ VENV/
 # Data files
 data/
 
-
 # Script output
 script_output/
 
@@ -30,3 +29,5 @@ Thumbs.db
 *.tar
 *.parquet
 *.tmp
+
+
