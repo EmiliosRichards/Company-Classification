@@ -13,6 +13,7 @@ VENV/
 
 # Data files
 data/
+notebooks/
 
 # Script output
 script_output/
