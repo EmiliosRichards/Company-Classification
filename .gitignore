@@ -24,3 +24,10 @@ script_output/
 # OS specific
 .DS_Store
 Thumbs.db
+*.csv
+*.zip
+*.tar
+*.parquet
+*.tmp
+
+

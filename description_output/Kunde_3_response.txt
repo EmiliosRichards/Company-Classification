@@ -1,0 +1,5 @@
+```json
+{
+  "summary": "Cloud Ahoi is a German cybersecurity consulting firm specializing in Information Security Management. The company provides tailored solutions for small and medium-sized enterprises (SMEs), public sector organizations, and companies within the automotive industry. Its core offerings include the implementation of Information Security Management Systems (ISMS), expert guidance for achieving ISO 27001 and TISAX certifications, and IT security architecture consulting. Cloud Ahoi also offers employee training and interim CISO services, focusing on a holistic approach to deliver future-proof solutions that strengthen clients' security posture and ensure compliance with industry standards."
+}
+```

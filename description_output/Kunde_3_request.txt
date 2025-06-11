@@ -1,0 +1,70 @@
+You are an expert business analyst. Your task is to synthesize information from two sources: structured data from an Excel file and unstructured German text. Based on this combined information, please provide a concise and professional company description in English, with a maximum of 150 words.
+
+Your analysis should cover the following key areas:
+1.  **Core Business and Offerings:** What does the company do? What are its main products or services?
+2.  **Target Industry:** What is the company's primary industry? 
+3.  **Customer Base:** Who are their likely customers? (e.g., B2B, SMEs, large enterprises, specific sectors).
+
+Your response must be a single, valid JSON object. Do not include any conversational preamble, summaries, or any text whatsoever outside of this JSON structure. Your response must begin with '{' and end with '}'.
+
+JSON Output Structure:
+{
+  "summary": "Your detailed and informative summary here..."
+}
+
+IMPORTANT:
+You MUST return all fields specified in the JSON structure. If a value for a field cannot be determined, return an appropriate default value (e.g., an empty string "" for the summary), but do not omit the field itself.
+
+Remember, the entire response must be ONLY the JSON object. Do not wrap it in markdown ```json blocks.
+
+Here is the combined information:
+
+--- STRUCTURED DATA (from Excel) ---
+Company Name                                                                                    Cloud Ahoi
+Industry                                                 Information Security Management; Cybersecurity...
+Industry Category                                                                   Cybersecurity Services
+Products/Services Offered                                Setup of Information Security Management Syste...
+USP (Unique Selling Proposition) / Key Selling Points    Tailored solutions precisely matched to custom...
+Customer Target Segments                                 Small and medium-sized enterprises (SMEs); Pub...
+Customer Target Segments Category                        SMEs (Small & Medium Enterprises); Public Sect...
+Business Model                                                Service-oriented; Consulting; Project-based.
+Business Model Category                                                         Consulting / Project-Based
+Company Size Indicators                                  Not found (The text mentions it serves SMEs, b...
+Company Size Category                                                                Unknown/Not Specified
+Innovation Level Indicators                              Focus on "future-proof" IT architectures; Addr...
+Geographic Reach                                         National (Germany - "Mit Sitz in Deutschland" ...
+Geographic Reach Category                                                               National (Germany)
+Website                                                                                      cloud-ahoi.de
+Email                                                                                  inbox@cloud-ahoi.de
+Phone                                                                                                  NaN
+Source Document Section/Notes                                                                      Kunde 3
+Is Successful Partner                                                                                 True
+
+--- UNSTRUCTURED GERMAN TEXT ---
+cloud-ahoi.de   
+(Kein Skript vorhanden)
+Cloud Ahoi – Ihr Partner für Informationssicherheitsmanagement
+Cloud Ahoi ist ein auf Informationssicherheitsmanagement spezialisiertes Unternehmen, das kleine und mittelständische Betriebe sowie die öffentliche Hand dabei unterstützt, ihre IT-Sicherheitsstandards zu optimieren und den wachsenden Anforderungen an Datenschutz und Informationssicherheit gerecht zu werden. Mit Sitz in Deutschland bietet Cloud Ahoi maßgeschneiderte Lösungen, die genau auf die Bedürfnisse ihrer Kunden zugeschnitten sind.
+Website: cloud-ahoi.de
+Dienstleistungen:
+•	Einrichtung von Informationssicherheits-Managementsystemen (ISMS): Implementierung maßgeschneiderter ISMS, die sowohl betriebliche Anforderungen als auch gesetzliche Vorgaben erfüllen. 
+Cloud Ahoi
+•	Zertifizierung nach ISO 27001: Unterstützung auf dem Weg zur ISO 27001-Zertifizierung, um die Sicherheit von Daten nachhaltig zu gewährleisten und internationalen Standards zu entsprechen. 
+Cloud Ahoi
+•	Zertifizierung nach TISAX: Spezialisierte Beratung für Unternehmen der Automobilindustrie zur Erlangung der TISAX-Zertifizierung, um branchenspezifische Sicherheitsanforderungen zu erfüllen. 
+Cloud Ahoi
+•	Beratung und Schulung: Angebot von Schulungen für Mitarbeiter und kontinuierliche Beratung, um das Bewusstsein für Informationssicherheit auf allen Unternehmensebenen zu stärken. 
+Cloud Ahoi
+•	Interim CISO: Bereitstellung von Interimslösungen für die Position des Chief Information Security Officer (CISO), um Unternehmen in Übergangsphasen oder bei spezifischen Projekten zu unterstützen. 
+Cloud Ahoi
+•	IT-Sicherheitsarchitektur Consulting: Beratung zur Entwicklung und Implementierung sicherer IT-Architekturen, die den aktuellen Bedrohungen standhalten und zukunftssicher sind. 
+Cloud Ahoi
+Unternehmensphilosophie:
+Cloud Ahoi verfolgt einen ganzheitlichen Ansatz im Informationssicherheitsmanagement. Das Unternehmen betrachtet Informationssicherheit nicht nur als technische Notwendigkeit, sondern als integralen Bestandteil der Unternehmensführung. Durch langjährige Erfahrung und tiefgehendes Fachwissen unterstützt Cloud Ahoi seine Kunden dabei, Informationssicherheit als Managementkonzept zu etablieren und somit die Zukunftsfähigkeit des Unternehmens zu sichern. 
+Cloud Ahoi
+
+Kontaktinformationen:
+E-Mail: inbox@cloud-ahoi.de
+Website: cloud-ahoi.de
+Mit umfassender Expertise und einem klaren Fokus auf individuelle Kundenbedürfnisse bietet Cloud Ahoi effektive Lösungen, um Informationssicherheit zu stärken und Compliance-Anforderungen wie NIS2 und ISO 27001 zu erfüllen.
+---

@@ -1,0 +1,5 @@
+```json
+{
+  "summary": "Denkmal Zukunft GmbH & Co. KG is a German management consulting firm specializing in business process optimization. Based in Kassel, the company offers services including production optimization, efficiency improvement, leadership development, and change management. A key differentiator is their hands-on, implementation-focused approach, contrasting with traditional theoretical consulting. They utilize innovative methods like LEGO® SERIOUS PLAY® workshops to foster creative problem-solving. Their primary target customers are B2B clients within the manufacturing and service sectors, ranging from SMEs to large enterprises, aiming to enhance profitability and create sustainable, efficient workflows. Their client portfolio includes notable companies such as Pfizer Pharma and Stadler Deutschland, underscoring their expertise in serving established industrial and service-oriented businesses."
+}
+```

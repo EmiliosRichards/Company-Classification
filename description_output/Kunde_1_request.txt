@@ -1,0 +1,90 @@
+You are an expert business analyst. Your task is to synthesize information from two sources: structured data from an Excel file and unstructured German text. Based on this combined information, please provide a concise and professional company description in English, with a maximum of 150 words.
+
+Your analysis should cover the following key areas:
+1.  **Core Business and Offerings:** What does the company do? What are its main products or services?
+2.  **Target Industry:** What is the company's primary industry? 
+3.  **Customer Base:** Who are their likely customers? (e.g., B2B, SMEs, large enterprises, specific sectors).
+
+Your response must be a single, valid JSON object. Do not include any conversational preamble, summaries, or any text whatsoever outside of this JSON structure. Your response must begin with '{' and end with '}'.
+
+JSON Output Structure:
+{
+  "summary": "Your detailed and informative summary here..."
+}
+
+IMPORTANT:
+You MUST return all fields specified in the JSON structure. If a value for a field cannot be determined, return an appropriate default value (e.g., an empty string "" for the summary), but do not omit the field itself.
+
+Remember, the entire response must be ONLY the JSON object. Do not wrap it in markdown ```json blocks.
+
+Here is the combined information:
+
+--- STRUCTURED DATA (from Excel) ---
+Company Name                                                                 Denkmal Zukunft GmbH & Co. KG
+Industry                                                 Business Process Optimization Consulting; Lead...
+Industry Category                                              Business Consulting / Management Consulting
+Products/Services Offered                                Production optimization & efficiency improveme...
+USP (Unique Selling Proposition) / Key Selling Points    Focus on practical implementation rather than ...
+Customer Target Segments                                 Production companies; Service providers. (Ment...
+Customer Target Segments Category                        Manufacturing Sector (B2B); Service Providers ...
+Business Model                                           Service-oriented; Project-based consulting; Of...
+Business Model Category                                                         Consulting / Project-Based
+Company Size Indicators                                  Not found (The text does not specify employee ...
+Company Size Category                                                                Unknown/Not Specified
+Innovation Level Indicators                              Use of LEGO® SERIOUS PLAY® (described as "inno...
+Geographic Reach                                         National (Germany, based in Kassel). (Mentions...
+Geographic Reach Category                                                               National (Germany)
+Website                                                                                 denkmalzukunft.com
+Email                                                                              info@denkmalzukunft.com
+Phone                                                                                     49056131701788.0
+Source Document Section/Notes                                                                      Kunde 1
+Is Successful Partner                                                                                 True
+
+--- UNSTRUCTURED GERMAN TEXT ---
+DenkmalZukunft.com
+Denkmal Zukunft GmbH & Co. KG – Effizienzsteigerung & Führungskräfteentwicklung
+Denkmal Zukunft GmbH & Co. KG ist spezialisiert auf Effizienz- und Ablaufoptimierung in Unternehmen. Mit Sitz in Kassel unterstützt das Unternehmen Produktionsbetriebe und Dienstleister dabei, ihre Abläufe reibungsloser zu gestalten und nachhaltige Veränderungen umzusetzen. Der Fokus liegt auf Prozessverbesserungen, Führungskräfteentwicklung und Change-Management, um Unternehmen leistungsfähiger und profitabler zu machen.
+denkmalzukunft.com
+________________________________________
+Dienstleistungen:
+•	Produktionsoptimierung & Effizienzsteigerung: Identifikation von Engpässen und praxisnahe Lösungen zur Verbesserung der Abläufe.
+•	Führungskräfteentwicklung: Entwicklung zukunftsorientierter Führungskonzepte für nachhaltige Unternehmensführung.
+•	Team-Performance: Maßnahmen zur Optimierung der Zusammenarbeit und Steigerung der Produktivität.
+•	Strategie & Vision: Unterstützung bei der Entwicklung und Umsetzung klarer Unternehmensstrategien.
+•	Organisationsentwicklung: Gestaltung flexibler, zukunftsfähiger Strukturen zur langfristigen Wettbewerbsfähigkeit.
+•	Change-Management: Begleitung von Veränderungsprozessen, um neue Prozesse erfolgreich zu implementieren.
+•	LEGO® SERIOUS PLAY® Workshops: Innovative Workshops für kreative Problemlösung und Team-Dynamik.
+•	Fördermittelberatung: Unterstützung bei der Identifizierung und Beantragung von Fördermitteln für Unternehmensprojekte.
+________________________________________
+Anwendungsfall – Kundenansprache:
+*"Guten Tag, mein Name ist... von Denkmal Zukunft.
+Wir sind Experten für Effizienz- und Ablaufoptimierung. Unser Ziel ist es, Abläufe nicht nur reibungsloser zu gestalten, sondern auch dafür zu sorgen, dass Ihre Mitarbeiter wieder Bock auf Montag haben – statt sich über unnötige Prozesse zu ärgern.
+Warum wir das können?
+Weil wir nicht aus einem Elfenbeinturm kommen. Mit 23 Jahren praktischer Erfahrung – von der Werkbank bis in die Geschäftsführung – kennen wir die Abläufe in Unternehmen aus jeder Perspektive. Unsere Expertise reicht vom Mechaniker über den Schlosser bis zum COO, von der Personalreferentin bis zur Head-of-Europe HR.
+
+Wir wissen, was funktioniert und was nicht – und kombinieren dieses Wissen mit Best Practices aus erfolgreichen Unternehmen. Dadurch entwickeln wir maßgeschneiderte Lösungen, die sich sofort umsetzen lassen.
+Haben Sie kurz zwei Minuten, damit ich Ihnen zeigen kann, wie das auch in Ihrem Unternehmen funktionieren kann?"*
+✔ Identifikation von Engpässen & ungenutzten Potenzialen
+✔ Entwicklung praxisnaher Lösungen für nachhaltige Verbesserungen
+✔ Sichere Prozesse & klare Zuständigkeiten für entlastete Führungskräfte
+✔ Flüssigere Abläufe & motivierte Mitarbeiter, die gerne zur Arbeit kommen
+________________________________________
+Unser Ansatz: Umsetzung statt PowerPoint-Beratung
+Viele Unternehmen haben starke Teams und gute Produkte, aber ihre Strukturen bremsen sie aus. Genau da setzen wir an.
+Wir kommen mit dem berühmten Brille von außen, analysieren Ihre Abläufe vor Ort und geben Ihnen konkrete Handlungsempfehlungen für nachhaltige Verbesserungen.
+Wie sieht die Umsetzung aus?
+Wir sind keine klassische Beratungsbude, die nur theoretische Analysen liefert und nach der Rechnung wieder verschwindet. Wir packen mit an und begleiten den gesamten Prozess.
+Unser Fokus liegt auf der praktischen Umsetzung, sodass:
+•	Verbesserungen wirklich funktionieren
+•	Neue Strukturen langfristig im Unternehmen verankert werden
+•	Mitarbeiter aktiv eingebunden werden, statt Veränderungen nur „übergestülpt“ zu bekommen
+Unsere 3- bis 5-tägige Potenzialanalyse liefert Ihnen sofort verwertbare Ergebnisse.
+Erfolgsgeschichten: Unternehmen wie Pfizer Pharma GmbH und Stadler Deutschland vertrauen bereits auf unsere Expertise.
+________________________________________
+Kontaktinformationen:
+📍 Adresse: Bodelschwinghstraße 4, 34119 Kassel, Deutschland
+📞 Telefon: +49 (0) 561 31701788
+📧 E-Mail: info@denkmalzukunft.com
+🌐 Website: denkmalzukunft.com
+Mit unserer praxisnahen Umsetzung, langjähriger Erfahrung und bewährten Methoden macht Denkmal Zukunft Unternehmen effizienter, produktiver und zukunftssicher.
+---
