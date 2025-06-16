@@ -1,3 +1,8 @@
+"""
+This script renames files in the 'data/Kunde_Structured_Output/' directory to ensure
+they follow a consistent naming convention. It handles specific cases like "Kunde.md"
+and "Kunde2.md" and general cases like "Kunde copy X.md" to rename them to "Kunde X.md".
+"""
 import os
 import re
 

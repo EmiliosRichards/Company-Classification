@@ -1,3 +1,9 @@
+"""
+This script generates company descriptions using the Gemini API.
+It reads company data from an Excel file, extracts German text from prompt files,
+and uses a prompt template to generate descriptions. The generated descriptions
+are then saved to a CSV file.
+"""
 import os
 import pandas as pd
 from dotenv import load_dotenv

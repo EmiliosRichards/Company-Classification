@@ -1,4 +1,9 @@
+"""
+This script processes company data by extracting information from a source document,
+calling the Gemini API to generate summaries, and saving the results to structured output files.
+"""
 import os
+import json
 import re
 import logging
 import pathlib
@@ -6,9 +11,9 @@ import google.generativeai as genai
 from google.generativeai.types import GenerationConfig
 
 # --- Configuration ---
-SOURCE_DOC_PATH = pathlib.Path("../docs/Manuav Kundenzusammenfassung für Klaus.md")
-PROMPT_TEMPLATE_PATH = pathlib.Path("../prompts/data_extraction.md")
-OUTPUT_BASE_DIR = pathlib.Path("../data/Kunde_Structured_Output") # Updated base output directory
+SOURCE_DOC_PATH = pathlib.Path("docs/Manuav Kundenzusammenfassung für Klaus.md")
+PROMPT_TEMPLATE_PATH = pathlib.Path("prompts/data_extraction_v2.md")
+OUTPUT_BASE_DIR = pathlib.Path("data/Kunde_Structured_Output") # Updated base output directory
 PROCESSED_MD_FILENAME_TEMPLATE = "Kunde {kunde_num}.md"
 RAW_PROMPT_FILENAME_TEMPLATE = "prompt_Kunde_{kunde_num}.txt"
 RAW_LLM_RESPONSE_FILENAME_TEMPLATE = "llm_response_Kunde_{kunde_num}.txt"
@@ -16,6 +21,11 @@ GEMINI_API_KEY_ENV_VAR = "GEMINI_API_KEY" # Corrected to be the var name, not a 
 GEMINI_MODEL_NAME = "gemini-2.5-pro-preview-05-06" # Updated model name
 START_KUNDE_NUM = 1 # Reset to process full range
 END_KUNDE_NUM = 70
+
+import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Logging Setup ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -61,6 +71,7 @@ def parse_company_data(file_path: pathlib.Path) -> dict[int, str]:
                 # For now, let's assume the text_block is what comes *after* the KUNDE X: line.
                 # The regex above might need adjustment based on exact file structure.
                 # Let's refine the regex to better capture only the content *after* the KUNDE X line.
+                
             except ValueError:
                 logger.warning(f"Could not parse Kunde number from match: {match[0]}")
                 continue
@@ -178,13 +189,34 @@ def main():
         except Exception as e:
             logger.error(f"Could not create base output directory {OUTPUT_BASE_DIR}: {e}. Exiting.")
             return
-            
+
+    # Determine next run number
+    run_number = 1
+    for item in OUTPUT_BASE_DIR.iterdir():
+        if item.is_dir() and item.name.startswith("RUNx_"):
+            try:
+                existing_run_number = int(item.name.split("_")[0][4:])
+                run_number = max(run_number, existing_run_number + 1)
+            except ValueError:
+                pass
+
+    # Create run folder
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_folder_name = f"RUNx{run_number}_{timestamp}"
+    run_folder_path = OUTPUT_BASE_DIR / run_folder_name
+    try:
+        run_folder_path.mkdir(parents=True, exist_ok=True)
+        logger.info(f"Created run folder: {run_folder_path}")
+    except Exception as e:
+        logger.error(f"Could not create run folder {run_folder_path}: {e}. Exiting.")
+        return
+
     processed_count = 0
     for kunde_num in range(START_KUNDE_NUM, END_KUNDE_NUM + 1):
         logger.info(f"--- Processing Kunde {kunde_num} ---")
-        
+
         # Create specific output directory for this Kunde
-        kunde_specific_output_dir = OUTPUT_BASE_DIR / f"Kunde {kunde_num}"
+        kunde_specific_output_dir = run_folder_path / f"Kunde {kunde_num}"
         try:
             kunde_specific_output_dir.mkdir(parents=True, exist_ok=True)
         except Exception as e:
@@ -192,15 +224,15 @@ def main():
             continue
 
         company_text = all_company_data.get(kunde_num)
-        
+
         if not company_text:
             logger.warning(f"Data for Kunde {kunde_num} not found in the parsed source document. Skipping.")
             continue
-            
+
         logger.info(f"Found data for Kunde {kunde_num}. Length: {len(company_text)} chars.")
 
         raw_llm_response_text, final_llm_prompt = call_gemini_api(company_text, api_key, prompt_template)
-        
+
         # Save raw prompt
         if final_llm_prompt:
             prompt_file_name = RAW_PROMPT_FILENAME_TEMPLATE.format(kunde_num=kunde_num)
@@ -212,8 +244,43 @@ def main():
             except Exception as e:
                 logger.error(f"Error writing raw prompt file {prompt_file_path} for Kunde {kunde_num}: {e}")
 
+        from io import StringIO
         # Save raw LLM response and processed MD
         if raw_llm_response_text:
+            # Parse LLM response
+            try:
+                # Check for BOM and remove if present
+                if raw_llm_response_text.startswith('\ufeff'):
+                    raw_llm_response_text = raw_llm_response_text[1:]
+
+                # Remove markdown code blocks
+                raw_llm_response_text = re.sub(r"```json\n(.*)\n```", r"\1", raw_llm_response_text, flags=re.DOTALL)
+                raw_llm_response_text = raw_llm_response_text.strip()
+
+                attributes = json.load(StringIO(raw_llm_response_text))
+                logger.info(f"Parsed attributes for Kunde {kunde_num}: {attributes}")
+            except json.JSONDecodeError as e:
+                logger.error(f"JSONDecodeError parsing LLM response for Kunde {kunde_num}: {e}")
+                logger.error(f"Raw LLM response text: {raw_llm_response_text}")
+                # Attempt to parse the JSON with more lenient settings
+                try:
+                    import ast
+                    attributes = ast.literal_eval(raw_llm_response_text)
+                    logger.info(f"Parsed attributes using ast.literal_eval for Kunde {kunde_num}: {attributes}")
+                except (ValueError, SyntaxError) as e2:
+                    logger.error(f"ast.literal_eval failed for Kunde {kunde_num}: {e2}")
+                    attributes = {}
+
+            # Save extracted attributes to JSON file
+            extracted_data_file_name = "extracted_data_Kunde_{kunde_num}.json".format(kunde_num=kunde_num)
+            extracted_data_file_path = kunde_specific_output_dir / extracted_data_file_name
+            try:
+                with open(extracted_data_file_path, 'w', encoding='utf-8') as f:
+                    json.dump(attributes, f, indent=4, ensure_ascii=False)
+                logger.info(f"Saved extracted data for Kunde {kunde_num} to {extracted_data_file_path}")
+            except Exception as e:
+                logger.error(f"Error writing extracted data file {extracted_data_file_path} for Kunde {kunde_num}: {e}")
+
             # Save raw LLM response
             llm_response_file_name = RAW_LLM_RESPONSE_FILENAME_TEMPLATE.format(kunde_num=kunde_num)
             llm_response_file_path = kunde_specific_output_dir / llm_response_file_name
@@ -236,7 +303,7 @@ def main():
                 logger.error(f"Error writing processed MD file {processed_md_file_path} for Kunde {kunde_num}: {e}")
         else:
             logger.error(f"Failed to get API response text for Kunde {kunde_num}. Skipping file writes for LLM output.")
-            
+
     logger.info(f"--- Script Finished ---")
     logger.info(f"Processed {processed_count} companies from Kunde {START_KUNDE_NUM} to {END_KUNDE_NUM}.")
 

@@ -1,3 +1,9 @@
+"""
+This script provides a function to format phone numbers to a standard international format
+and a function to process an Excel file, applying the phone number formatting to a
+specified column. It handles various input formats and outputs a new Excel file with
+the formatted phone numbers.
+"""
 import pandas as pd
 import re
 

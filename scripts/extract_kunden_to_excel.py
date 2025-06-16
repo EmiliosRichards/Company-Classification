@@ -1,3 +1,9 @@
+"""
+This script extracts data from structured markdown files (Kunde X.md) located in subdirectories
+within a base directory, and compiles this information into an Excel file.
+It parses specific fields from each markdown file, including contact information,
+and formats the output into a structured table.
+"""
 import os
 import re
 import pandas as pd

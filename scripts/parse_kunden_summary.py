@@ -1,3 +1,9 @@
+"""
+This script parses a markdown file containing company summaries, extracts relevant information
+such as company name, website, products/services, industry, and customer niche, and then
+writes this data to a CSV file. It includes functions for extracting specific data points
+using regular expressions and heuristics tailored to the format of the input markdown file.
+"""
 import csv
 import re
 

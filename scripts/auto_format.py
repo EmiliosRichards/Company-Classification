@@ -1,3 +1,7 @@
+"""
+This script auto-formats a Jupyter Notebook file.
+It loads the notebook, and then re-saves it, which applies automatic formatting.
+"""
 import nbformat
 
 # Load and re-save to auto-format
